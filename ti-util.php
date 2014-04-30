@@ -1,8 +1,18 @@
 <?php
 
 function ti_format_content($s) {
-  $thesis_content = '';
-  $thesis_keys = array('elevator_pitch', 'description');
+  $thesis_content = '<h2>' . $s['preferred_name'] . "<h2>\n" . $s['thesis']['elevator_pitch'];
+  $thesis_keys = array(
+    'url',
+    'image',
+    'description',
+    'research_process',
+    'personal_statement',
+    'design_process',
+    'production_process',
+    'user_testing',
+    'feedback'
+  );
   foreach ($thesis_keys as $key) {
     if (isset($s['thesis'][$key])) {
       $thesis_content = $thesis_content . $s['thesis'][$key];
