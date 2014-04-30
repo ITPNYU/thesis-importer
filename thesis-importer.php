@@ -11,6 +11,15 @@
 
 register_activation_hook( __FILE__, 'ti_setup');
 add_action('admin_init', 'ti_settings');
+add_action('admin_menu', 'ti_menu');
+
+function ti_menu() {
+  $page_hook = add_management_page( 'Thesis Importer', 'Thesis Importer', 'manage_options', 'thesis-importer', 'ti_page');
+}
+
+function ti_page() {
+  echo file_get_contents(plugin_dir_path(__FILE__) . '/html/tiPage.html');
+}
 
 function ti_setup() {
   add_option('ti_export_url');
