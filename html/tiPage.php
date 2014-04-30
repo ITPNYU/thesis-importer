@@ -10,7 +10,8 @@ if (get_option('ti_export_url')) {
     echo ' retrieved ' . count($export) . ' theses.';
     echo '<ul>\n';
     foreach ($export as $t) {
-      echo '<li>' . $t['preferred_name'] . ': ' . $t['title'] . '</li>\n';
+      #echo '<li>' . $t['preferred_name'] . ': ' . $t['title'] . '</li>\n';
+      echo '<li>' . var_dump($t) . '</li>\n';
     }
     echo '</ul>\n';
   }
