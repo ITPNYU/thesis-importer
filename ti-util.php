@@ -3,8 +3,8 @@
 function ti_format_content($s) {
   $thesis_content = '<h2>' . $s['preferred_name'] . "</h2>\n" 
     . $s['thesis']['elevator_pitch'];
-  if (isset($s['thesis']['url'])) {
-    $thesis_content .= $s['thesis']['url'] . "\n";
+  if (isset($s['thesis']['link'])) {
+    $thesis_content .= $s['thesis']['link'] . "\n";
   }
   $thesis_keys = array(
     'image',
