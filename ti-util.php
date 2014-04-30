@@ -18,7 +18,8 @@ function ti_format_content($s) {
   );
   foreach ($thesis_keys as $key) {
     if (isset($s['thesis'][$key]) && ($s['thesis'][$key] != '')) {
-      $thesis_content .= '<h3>' . ucfirst(preg_replace('/_/', ' ', $key)) . "</h3>\n"
+      $h_key = $key;
+      $thesis_content .= '<h3>' . ucfirst(preg_replace('/_/', ' ', $h_key)) . "</h3>\n"
         . $s['thesis'][$key];
     } 
   }
