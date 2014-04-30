@@ -18,7 +18,7 @@ function ti_menu() {
 }
 
 function ti_page() {
-  echo file_get_contents(plugin_dir_path(__FILE__) . '/html/tiPage.html');
+  echo file_get_contents(plugin_dir_path(__FILE__) . '/html/tiPage.php');
 }
 
 function ti_setup() {
