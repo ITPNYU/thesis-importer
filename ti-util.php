@@ -1,9 +1,12 @@
 <?php
 
 function ti_format_content($s) {
-  $thesis_content = '<h2>' . $s['preferred_name'] . "<h2>\n" . $s['thesis']['elevator_pitch'];
+  $thesis_content = '<h2>' . $s['preferred_name'] . "</h2>\n" 
+    . $s['thesis']['elevator_pitch'];
+  if (isset($s['thesis']['url'])) {
+    $thesis_content .= $s['thesis']['url'] . "\n";
+  }
   $thesis_keys = array(
-    'url',
     'image',
     'description',
     'research_process',
@@ -15,7 +18,8 @@ function ti_format_content($s) {
   );
   foreach ($thesis_keys as $key) {
     if (isset($s['thesis'][$key])) {
-      $thesis_content = $thesis_content . $s['thesis'][$key];
+      $thesis_content .= '<h3>' . ucfirst(preg_replace('_', ' ', $key)) . "</h3/n>"
+        . $s['thesis'][$key];
     } 
   }
   return $thesis_content;
