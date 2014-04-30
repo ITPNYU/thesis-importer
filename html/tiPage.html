@@ -5,5 +5,8 @@ if (get_option('ti_export_url')) {
   $export = file_get_contents(get_option('ti_export_url'));
   echo $export;
 }
+else {
+  echo "ti_export_url not set";
+}
 
 ?>
