@@ -15,7 +15,7 @@ if (get_option('ti_export_url')) {
     echo "</ul>\n";
 */
     foreach ($export as $student) {
-      $post_id = ti_post($student);
+      $post_id = ti_post($student, null);
       if ( is_wp_error($post_id) ) {
         echo $post_id->get_error_message();
       }
