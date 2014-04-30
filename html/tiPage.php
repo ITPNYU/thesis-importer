@@ -11,9 +11,9 @@ if (get_option('ti_export_url')) {
     echo '<ul>\n';
     foreach ($export as $t) {
       #echo '<li>' . $t['preferred_name'] . ': ' . $t['title'] . '</li>\n';
-      echo '<li>' . var_dump($t) . '</li>\n';
+      echo "<li>" . $t['preferred_name'] . "</li>\n";
     }
-    echo '</ul>\n';
+    echo "</ul>\n";
   }
   else {
     echo 'import failed';
