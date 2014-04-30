@@ -1,11 +1,18 @@
 <h2>Thesis Importer</h2>
 <?php 
-$export = '';
+$export_json = '';
+$export = array();
 if (get_option('ti_export_url')) {
   echo 'importing from ' . get_option('ti_export_url') . '... ';
-  $export = file_get_contents(get_option('ti_export_url'));
+  $export_json = file_get_contents(get_option('ti_export_url'));
+  $export = json_decode($export_json);
+  if (count($export) > 0) {
+    echo 'done.';
+  }
+  else {
+    echo 'import failed';
+  }
   echo '<br />';
-  echo $export;
 }
 else {
   echo "ti_export_url not set";
