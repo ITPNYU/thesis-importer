@@ -9,6 +9,8 @@
  * License: GPLv3
  */
 
+require 'ti_util.php';
+
 register_activation_hook( __FILE__, 'ti_setup');
 add_action('admin_init', 'ti_settings');
 add_action('admin_menu', 'ti_menu');
