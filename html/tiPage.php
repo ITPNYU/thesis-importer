@@ -7,7 +7,7 @@ if (get_option('ti_export_url')) {
   $export_json = file_get_contents(get_option('ti_export_url'));
   $export = json_decode($export_json);
   if (count($export) > 0) {
-    echo 'done.';
+    echo ' retrieved ' . count($export) . ' theses.';
   }
   else {
     echo 'import failed';
