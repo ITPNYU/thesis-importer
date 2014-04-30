@@ -20,6 +20,7 @@ function ti_post($s, $p) {
     $post_id = wp_insert_post( array(
       'post_title' => $s['thesis']['title'],
       'post_name' => sanitize_title($s['preferred_name'] . '-' . $s['thesis']['title']),
+      'post_status' => 'publish',
       'post_content' => ti_format_content($s) #,
       #'post_category' => array(),
     ) );
