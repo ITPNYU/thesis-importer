@@ -7,19 +7,20 @@ function ti_format_content($s) {
     $thesis_content .= $s['thesis']['link'] . "\n";
   }
   $thesis_keys = array(
-    'image',
-    'description',
-    'research_process',
-    'personal_statement',
-    'design_process',
-    'production_process',
-    'user_testing',
-    'feedback'
+    'image' => 'Image',
+    'description' => 'Description',
+    'research_plan' => 'Research Process',
+    'reason' => 'Personal Statement',
+    'design_process' => 'Design Process',
+    'production_process' => 'Production Process',
+    'user_testing' => 'User Testing',
+    'feedback' => 'Feedback',
+    'conclusions' => 'Conclusions'
   );
   foreach ($thesis_keys as $key) {
     if (isset($s['thesis'][$key]) && ($s['thesis'][$key] != '')) {
       $h_key = $key;
-      $thesis_content .= '<h3>' . ucfirst(preg_replace('/_/', ' ', $h_key)) . "</h3>\n"
+      $thesis_content .= '<h3>' . $thesis_keys[$h_key] . "</h3>\n"
         . $s['thesis'][$key];
     } 
   }
