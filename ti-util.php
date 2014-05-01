@@ -17,10 +17,9 @@ function ti_format_content($s) {
     'feedback' => 'Feedback',
     'conclusions' => 'Conclusions'
   );
-  foreach ($thesis_keys as $key) {
+  foreach ($thesis_keys as $key => $key_display) {
     if (isset($s['thesis'][$key]) && ($s['thesis'][$key] != '')) {
-      $h_key = $key;
-      $thesis_content .= '<h3>' . $thesis_keys[$h_key] . "</h3>\n"
+      $thesis_content .= '<h3>' . $key_display . "</h3>\n"
         . $s['thesis'][$key];
     } 
   }
