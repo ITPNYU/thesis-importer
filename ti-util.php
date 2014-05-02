@@ -7,16 +7,10 @@ function ti_format_content($s) {
     $thesis_content .= $s['thesis']['link'] . "\n";
   }
   if (isset($s['image'])) {
-    $thesis_content .= $s['image'];
+    $thesis_content .= $s['thesis']'image'];
   }
   if (isset($s['description'])) {
-    $thesis_content .= "<h3>Description</h3>\n" . $s['description'];
-  }
-  foreach ($thesis_keys as $key => $key_display) {
-    if (isset($s['thesis'][$key]) && ($s['thesis'][$key] != '')) {
-      $thesis_content .= '<h3>' . $key_display . "</h3>\n"
-        . $s['thesis'][$key];
-    } 
+    $thesis_content .= "<h3>Description</h3>\n" . $s['thesis']['description'];
   }
   return $thesis_content;
 }
