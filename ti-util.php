@@ -22,9 +22,9 @@ function ti_format_content($s) {
 function ti_post($s, $p) {
   $post_id = null;
   if (isset($p)) {
-    $post_id = $p;
-    wp_update_post(
+    $post_id = wp_update_post(
       array(
+        'ID' => $p->ID,
         'post_title' => $s['thesis']['title'],
         'post_status' => 'publish',
         'post_content' => ti_format_content($s),

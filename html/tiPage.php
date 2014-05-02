@@ -7,7 +7,7 @@ if (get_option('ti_export_url')) {
   $export_json = file_get_contents(get_option('ti_export_url'));
   $export = json_decode($export_json, TRUE);
   if (count($export) > 0) {
-    echo ' retrieved ' . count($export) . ' theses.';
+    echo ' retrieved ' . count($export) . ' theses.<br />';
 /*    echo "<ul>\n";
     foreach ($export as $t) {
       echo '<li>' . $t['preferred_name'] . ': ' . $t['thesis']['title'] . "</li>\n";
@@ -15,7 +15,17 @@ if (get_option('ti_export_url')) {
     echo "</ul>\n";
 */
     foreach ($export as $student) {
-      $post_id = ti_post($student, null);
+      $existing = get_posts(array(
+        'meta_key' => 'student',
+        'meta_value' => $student['preferred_name']
+      ));
+      if (count($existing) > 0) {
+        $post_id = $existing[0];
+      }
+      else {
+        $post_id = null;
+      }
+      $post_id = ti_post($student, $post_id);
       if ( is_wp_error($post_id) ) {
         echo $post_id->get_error_message();
       }
