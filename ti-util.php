@@ -1,21 +1,14 @@
 <?php
 
 function ti_format_content($s) {
-  $thesis_content = '<h2>' . $s['preferred_name'] . "</h2>\n" 
+  $thesis_content = '<h2><em>' . $s['preferred_name'] . "</em></h2>\n" 
     . $s['thesis']['elevator_pitch'];
   if (isset($s['thesis']['link'])) {
     $thesis_content .= $s['thesis']['link'] . "\n";
   }
   $thesis_keys = array(
     'image' => 'Image',
-    'description' => 'Description',
-    'research_plan' => 'Research Process',
-    'reason' => 'Personal Statement',
-    'design_process' => 'Design Process',
-    'production_process' => 'Production Process',
-    'user_testing' => 'User Testing',
-    'feedback' => 'Feedback',
-    'conclusions' => 'Conclusions'
+    'description' => 'Description'
   );
   foreach ($thesis_keys as $key => $key_display) {
     if (isset($s['thesis'][$key]) && ($s['thesis'][$key] != '')) {
@@ -30,7 +23,14 @@ function ti_post($s, $p) {
   $post_id = null;
   if (isset($p)) {
     $post_id = $p;
-    
+    wp_update_post(
+      array(
+        'post_title' => $s['thesis']['title'],
+        'post_status' => 'publish',
+        'post_content' => ti_format_content($s),
+        'post_category' => array($advisor_cat->term_id)
+      )
+    );
   }
   else {
     $advisor_cat = get_category_by_slug(sanitize_title($s['advisor']));
@@ -52,7 +52,8 @@ function ti_post($s, $p) {
         'post_category' => array($advisor_cat->term_id),
       )
     );
-  } 
+  }
+  update_post_meta($post_id, 'student', $s['preferred_name']);
   return $post_id;
 }
 
