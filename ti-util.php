@@ -6,7 +6,9 @@ function ti_format_content($s) {
   if (isset($s['thesis']['link'])) {
     $thesis_content .= $s['thesis']['link'] . "\n";
   }
-  if (isset($s['thesis']['image']) && ('' != $s['thesis']['image'])) {
+  if (isset($s['thesis']['image']) 
+    && filter_var($s['thesis']['image'], FILTER_VALIDATE_URL)
+    && !(preg_match('/\.pdf$/i', $s['thesis']['image']))) {
     $thesis_content .= '<img src="' . $s['thesis']['image'] . '" width="80%" />';
   }
   if (isset($s['thesis']['description'])) {
