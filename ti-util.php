@@ -6,10 +6,10 @@ function ti_format_content($s) {
   if (isset($s['thesis']['link'])) {
     $thesis_content .= $s['thesis']['link'] . "\n";
   }
-  if (isset($s['image'])) {
+  if (isset($s['thesis']['image'])) {
     $thesis_content .= $s['thesis']['image'];
   }
-  if (isset($s['description'])) {
+  if (isset($s['thesis']['description'])) {
     $thesis_content .= "<h3>Description</h3>\n" . $s['thesis']['description'];
   }
   return $thesis_content;
