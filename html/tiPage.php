@@ -21,16 +21,18 @@ if (get_option('ti_export_url')) {
       ));
       if (count($existing) > 0) {
         $post_id = $existing[0];
+        echo "updating ";
       }
       else {
         $post_id = null;
+        echo "creating ";
       }
       $post_id = ti_post($student, $post_id);
       if ( is_wp_error($post_id) ) {
         echo $post_id->get_error_message();
       }
       else {
-        echo 'created post ID ' . $post_id . "<br />\n";
+        echo 'post ID ' . $post_id . "<br />\n";
       }
     }
   }
