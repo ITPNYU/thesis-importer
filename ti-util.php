@@ -19,6 +19,7 @@ function ti_format_content($s) {
 
 function ti_post($s, $p) {
   $post_id = null;
+  $advisor_cat = get_category_by_slug(sanitize_title($s['advisor']));
   if (isset($p)) {
     $post_id = wp_update_post(
       array(
@@ -31,7 +32,6 @@ function ti_post($s, $p) {
     );
   }
   else {
-    $advisor_cat = get_category_by_slug(sanitize_title($s['advisor']));
     if ($advisor_cat == false) {
       $advisor_cat = wp_insert_category(
         array(
